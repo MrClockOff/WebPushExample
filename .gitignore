@@ -1,0 +1,10 @@
+server/ssl/ca.crt
+server/ssl/ca.key
+server/ssl/ca.srl
+server/ssl/client.crt
+server/ssl/client.csr
+server/ssl/client.key
+server/ssl/client.p12
+server/ssl/server.crt
+server/ssl/server.csr
+server/ssl/server.key

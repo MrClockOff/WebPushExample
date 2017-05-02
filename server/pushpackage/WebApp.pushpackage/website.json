@@ -1,0 +1,8 @@
+{
+    "websiteName": "WebApp",
+    "websitePushID": "web.app.id",
+    "allowedDomains": ["https://localhost:3443"],
+    "urlFormatString": "https://localhost:3443/#/%@",
+    "authenticationToken": "19f8d7a6e9fb8a7f6d9330dabe",
+    "webServiceURL": "https://localhost:3443"
+}

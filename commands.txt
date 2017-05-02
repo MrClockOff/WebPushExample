@@ -1,0 +1,53 @@
+################################
+# Sign Safari Push Package
+
+openssl pkcs12 -in ./website_aps_production.p12 -clcerts -nokeys -out ./package.crt
+openssl pkcs12 -in ./website_aps_production.p12 -nocerts -out ./package.key
+openssl smime -binary -sign -signer ./package.crt -inkey ./package.key -in ./WebApp.pushpackage/manifest.json -out ./WebApp.pushpackage/signature -outform DER
+
+################################
+# Zip Safari Push Package
+
+zip -r ./WebApp.pushpackage.zip ./WebApp.pushpackage -x '*.DS_Store'
+################################
+
+
+
+
+################################
+# Start Windows Serve
+
+cd c:\program files\iis express
+iisexpress /path:Y:\Documents\Programming\Web\PushNotificationsTest /port:3443
+
+################################
+# Start Node.JS Server
+
+npm start
+################################
+
+
+
+
+################################
+# Start Chrome to allow insecure connection to localhost
+
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --allow-insecure-localhost
+################################
+
+
+
+
+################################
+# Send Chrome Push Notification
+
+curl -X POST -H "Authorization: key=SERVER KEY" -H "Content-Type: application/json" -d '{ "notification": { "title": "Test title", "body": "Test body", "icon": "icon.png", "click_action": "https://localhost:3443?p=1" }, "to": "CLIENT ACCESS TOKEN" }' "https://fcm.googleapis.com/fcm/send"
+
+################################
+# Send Firefox Push Notification
+
+curl -X POST -H "Authorization: key=SERVER KEY" -H "Content-Type: application/json" -d '{ "notification": { "title": "Test title", "body": "Test body", "icon": "icon.png", "click_action": "https://localhost:3443?p=1" }, "to": "CLIENT ACCESS TOKEN" }' "https://fcm.googleapis.com/fcm/send"
+
+################################
+# Send Safari Push Notification
+################################
